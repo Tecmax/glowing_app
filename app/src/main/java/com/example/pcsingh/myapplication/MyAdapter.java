@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -30,7 +31,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         holder.circleView.setColorFilter(rainbow[position]);
         holder.ribbonView.setColorFilter(rainbow[position]);
-        holder.arrowView.setColorFilter(Color.parseColor("#C1764B"));
+        holder.arrowView.setColorFilter(Color.parseColor("#ffffff"));
     }
 
     @Override
@@ -46,6 +47,10 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         protected ImageView circleView;
         @BindView(R.id.arrow_view)
         protected ImageView arrowView;
+        @BindView(R.id.list_image)
+        protected ImageView listImage;
+        @BindView(R.id.share)
+        protected TextView share;
 
         public MyViewHolder(View itemView) {
             super(itemView);
