@@ -3,8 +3,7 @@
 /local.properties
 /.idea/
 /.idea/libraries
-/.idea/modules.xml
-/.idea/workspace.xml
+/.idea/*.xml
 /gradle
 .DS_Store
 /build
