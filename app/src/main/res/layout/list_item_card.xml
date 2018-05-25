@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView  xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    app:cardCornerRadius="2dp"
+    app:cardElevation="4dp"
+    app:cardUseCompatPadding="true">
+
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:background="@drawable/collection_poster">
+
+        <FrameLayout
+            android:id="@+id/layout_ovel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|left"
+            android:layout_marginTop="30dp">
+
+            <ImageView
+                android:id="@+id/circle_view"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:paddingEnd="5dp"
+                android:paddingStart="5dp"
+                android:src="@drawable/circle" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/ovel_label"
+                android:textColor="@android:color/white" />
+        </FrameLayout>
+
+
+        <FrameLayout
+            android:id="@+id/layout_ribbon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|right"
+            android:layout_margin="2dp">
+
+            <ImageView
+                android:id="@+id/ribbon_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/right_ribbon" />
+
+            <ImageView
+                android:id="@+id/arrow_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/left_ribbon" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|right"
+                android:paddingEnd="3dp"
+                android:paddingStart="3dp"
+                android:text="@string/ribbon_label"
+                android:textColor="@android:color/black"
+                android:textStyle="italic" />
+        </FrameLayout>
+
+    </FrameLayout>
+</android.support.v7.widget.CardView>
