@@ -36,14 +36,13 @@ public class ShareUtil {
     private static ArrayList<Uri> createUriFromBitmap(@NonNull Context context,
                                                       final List<Bitmap> bitmapList, final List<String> captionList) {
         final ArrayList<Uri> uriList = new ArrayList<>();
-        for (int i = 0; i < bitmapList.size(); i++) {
-            final Bitmap bitmap = bitmapList.get(i);
-            final String caption = captionList.get(i);
-            final ByteArrayOutputStream bytes = new ByteArrayOutputStream();
-            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
-            final String path = MediaStore.Images.Media.
-                    insertImage(context.getContentResolver(), bitmap, caption, null);
-            uriList.add(Uri.parse(path));
+        if (bitmapList != null && !bitmapList.isEmpty() && captionList != null && !captionList.isEmpty()
+                && bitmapList.size() == captionList.size()) {
+            for (int i = 0; i < bitmapList.size(); i++) {
+                final Bitmap bitmap = bitmapList.get(i);
+                final String caption = captionList.get(i);
+                uriList.add(createUriFromBitmap(context, bitmap, caption));
+            }
         }
         return uriList;
     }
