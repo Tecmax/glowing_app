@@ -1,10 +1,15 @@
 package com.example.pcsingh.myapplication;
 
 import android.content.Context;
+import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.util.Log;
 import android.widget.ImageView;
 
+import com.jakewharton.picasso.OkHttp3Downloader;
+import com.squareup.picasso.Cache;
+import com.squareup.picasso.Downloader;
+import com.squareup.picasso.LruCache;
 import com.squareup.picasso.Picasso;
 import com.squareup.picasso.RequestCreator;
 
@@ -17,6 +22,7 @@ public class ImageUtil {
     private static ImageUtil instance;
     private final WeakReference<Context> context;
     private boolean singletonBuilt;
+    private static final int PICASSO_DISK_CACHE_SIZE = 1024 * 1024 * 30; // Size in bytes (30 MB)
 
     public ImageUtil(final Context context) {
         this.context = new WeakReference<>(context);
@@ -42,7 +48,7 @@ public class ImageUtil {
         if (!singletonBuilt) {
             if (ctx != null) {
                 final Picasso.Builder builder = new Picasso.Builder(ctx);
-
+                setUpDownloader(builder,ctx);
                 try {
                     Picasso.setSingletonInstance(builder.build());
                 } catch (IllegalStateException e) {
@@ -51,6 +57,14 @@ public class ImageUtil {
             }
         }
         return Picasso.with(ctx);
+    }
+
+    private void setUpDownloader(@NonNull final Picasso.Builder builder, @NonNull final Context context) {
+        // Use OkHttp as downloader
+        final Downloader downloader = new OkHttp3Downloader(context, PICASSO_DISK_CACHE_SIZE);
+        // Create memory cache
+        final Cache memoryCache = new LruCache(PICASSO_DISK_CACHE_SIZE);
+        builder.downloader(downloader).memoryCache(memoryCache);
     }
 
     public void loadImage(String url, ImageView imageView) {
