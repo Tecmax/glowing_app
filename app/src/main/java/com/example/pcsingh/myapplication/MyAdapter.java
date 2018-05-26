@@ -1,7 +1,10 @@
 package com.example.pcsingh.myapplication;
 
+import android.app.Activity;
+import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.graphics.drawable.BitmapDrawable;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.text.Spannable;
@@ -93,8 +96,12 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         }
 
         @OnClick(R.id.share)
-        public void share() {
-            ShareUtil.shareData(imageLink, caption);
+        public void share(View view) {
+            if (PermissionUtil.isStoragePermissionGranted((Activity) view.getContext(),
+                    PermissionUtil.WRITE_EXTERNAL_STORAGE_REQUEST_CODE)) {
+                final Bitmap bm = ((BitmapDrawable) listImage.getDrawable()).getBitmap();
+                ShareUtil.shareData(view.getContext(), caption, bm);
+            }
         }
 
         @OnClick(R.id.copy_to_my_shop)
