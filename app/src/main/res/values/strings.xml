@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">My Application</string>
+    <string name="ovel_label">50% off \n Hot sale</string>
+    <string name="ribbon_label">Earn up to 500/ Price</string>
+    <string name="caption">share to earn</string>
+    <string name="first_line_details">Stylish &amp; Ethnic Lehenga Choli</string>
+    <string name="second_line_details">10 Designs starting at %s</string>
+
+    <string-array name="image_list">
+        <item>"https://glowroad.com/faceview/b3g/cc/ae/imgs/nt/1526448186735_collection_poster.jpeg"</item>
+        <item>"http://www.earlypad.com/wp-content/uploads/2017/05/earlypad-digital-marketing.jpg"</item>
+        <item>"https://glowroad.com/faceview/b3g/cc/ae/imgs/nt/1526448186735_collection_poster.jpeg"</item>
+        <item>"http://mmarchev.com/wp-content/uploads/2015/03/digitalmarketingcourses1.jpg"</item>
+        <item>"https://glowroad.com/faceview/b3g/cc/ae/imgs/nt/1526448186735_collection_poster.jpeg"</item>
+        <item>"https://digitalks.com.br/wp-content/uploads/2016/09/Marketing-digital.jpg"</item>
+        <item>"https://www.manaferra.com/wp-content/uploads/2017/11/digital-marketing-1038x576.jpg"</item>
+        <item>"https://digitalmarketingphilippines.com/wp-content/uploads/2014/08/paid-and-free-social-media.jpg"</item>
+        <item>"http://www.etwinning.pl/wp-content/uploads/2016/11/digital-marketing-1563467_960_720.png"</item>
+        <item>"http://mmarchev.com/wp-content/uploads/2015/03/digitalmarketingcourses1.jpg"</item>
+        <item>"https://glowroad.com/faceview/b3g/cc/ae/imgs/nt/1526448186735_collection_poster.jpeg"</item>
+        <item>"https://digitalks.com.br/wp-content/uploads/2016/09/Marketing-digital.jpg"</item>
+    </string-array>
+</resources>
