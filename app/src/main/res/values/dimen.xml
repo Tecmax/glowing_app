@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="ribbon_width">250dp</dimen>
+    <dimen name="ribbon_height">40dp</dimen>
+    <dimen name="header_view_height">200dp</dimen>
+</resources>
