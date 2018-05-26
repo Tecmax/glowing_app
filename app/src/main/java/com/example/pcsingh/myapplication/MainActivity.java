@@ -50,7 +50,11 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        itemList.setAdapter(new MyAdapter(rainbow, imageList));
+        // For testing with many images
+        //itemList.setAdapter(new MyAdapter(rainbow, imageList));
+
+        // for single image testing (as shared in mail)
+        itemList.setAdapter(new MyAdapter(rainbow));
 
         ImageUtil.getInstance().loadImage(headerImageNewArrival, newArrival);
         ImageUtil.getInstance().loadImage(headerImageLowestPrice, lowestPrice);

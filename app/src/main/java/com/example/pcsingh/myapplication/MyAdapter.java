@@ -33,6 +33,11 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         this.imageList = imageList;
     }
 
+    public MyAdapter(int[] rainbow) {
+        this.rainbow = rainbow;
+        imageList = null;
+    }
+
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -43,7 +48,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        holder.setImageLink(imageList[position]);
+        holder.setImageLink(imageList != null ? imageList[position] :
+                "https://glowroad.com/faceview/b3g/cc/ae/imgs/nt/1526448186735_collection_poster.jpeg");
         holder.circleView.setColorFilter(rainbow[position]);
         holder.ribbonView.setColorFilter(rainbow[position]);
         holder.arrowView.setColorFilter(Color.parseColor("#ffffff"));
