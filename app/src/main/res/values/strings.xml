@@ -1,8 +1,0 @@
-<resources>
-    <string name="app_name">My Application</string>
-    <string name="ovel_label">50% off \n Hot sale</string>
-    <string name="ribbon_label">Earn up to 500/ Price</string>
-    <string name="caption">share to earn</string>
-    <string name="first_line_details">Stylish &amp; Ethnic Lehenga Choli</string>
-    <string name="second_line_details">10 Designs starting at %s</string>
-</resources>
