@@ -54,6 +54,7 @@ public class ImageUtil {
                 } catch (IllegalStateException e) {
                     Log.e(TAG, "Singleton instance already exists.");
                 }
+                singletonBuilt = true;
             }
         }
         return Picasso.with(ctx);
