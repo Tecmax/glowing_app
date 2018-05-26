@@ -77,6 +77,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         protected ImageView listImage;
         @BindView(R.id.second_line_details)
         protected TextView secondLineDetails;
+        @BindView(R.id.copy_to_my_shop)
+        protected TextView copyToMyShop;
 
         @BindString(R.string.caption)
         protected String caption;
@@ -88,6 +90,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         public MyViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
+            copyToMyShop.setTextIsSelectable(true);
         }
 
         public void setImageLink(String imageLink) {
@@ -106,17 +109,12 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
                 if (listImage.getDrawable() != null &&
                         ((BitmapDrawable) listImage.getDrawable()).getBitmap() != null) {
                     final Bitmap bm = ((BitmapDrawable) listImage.getDrawable()).getBitmap();
-                    ShareUtil.shareData(view.getContext(), caption, bm);
+                    ShareUtil.sendingImageWithCaption(view.getContext(), caption, bm);
                 } else {
                     Toast.makeText(view.getContext(),
-                            "Image isn't available, Please Try again later", Toast.LENGTH_LONG).show();
+                            "Image isn't available, Please Try again later", Toast.LENGTH_SHORT).show();
                 }
             }
-        }
-
-        @OnClick(R.id.copy_to_my_shop)
-        public void copyToMyShop() {
-
         }
     }
 }
