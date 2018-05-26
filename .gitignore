@@ -2,6 +2,7 @@
 .gradle
 /local.properties
 /.idea/*
+/.idea/cache/
 /gradle
 .DS_Store
 /build
