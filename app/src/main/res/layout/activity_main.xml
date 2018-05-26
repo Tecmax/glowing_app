@@ -1,8 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.RecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/itemList"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#dad0d0"
+    android:orientation="vertical"
     android:paddingEnd="4dp"
-    android:paddingStart="4dp"
-    android:background="#dad0d0" />
+    android:paddingStart="4dp">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fitsSystemWindows="true"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#dad0d0"
+            android:fitsSystemWindows="true"
+            app:contentScrim="?attr/colorPrimary"
+            app:expandedTitleMarginEnd="64dp"
+            app:expandedTitleMarginStart="48dp"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+            <include
+                layout="@layout/header_view" />
+
+        </android.support.design.widget.CollapsingToolbarLayout>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/itemList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+</android.support.design.widget.CoordinatorLayout>

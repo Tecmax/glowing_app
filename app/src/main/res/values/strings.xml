@@ -6,18 +6,23 @@
     <string name="first_line_details">Stylish &amp; Ethnic Lehenga Choli</string>
     <string name="second_line_details">10 Designs starting at %s</string>
 
+    <string name="new_arrival">https://glowroad.com/web/images/final-home-images/latestArrivals.png</string>
+    <string name="lowest_price">https://glowroad.com/web/images/final-home-images/lowestPrice.png</string>
+    <string name="best_selling">https://glowroad.com/web/images/final-home-images/cod-filter.png</string>
+
     <string-array name="image_list">
         <item>"https://glowroad.com/faceview/b3g/cc/ae/imgs/nt/1526448186735_collection_poster.jpeg"</item>
-        <item>"http://www.earlypad.com/wp-content/uploads/2017/05/earlypad-digital-marketing.jpg"</item>
-        <item>"https://glowroad.com/faceview/b3g/cc/ae/imgs/nt/1526448186735_collection_poster.jpeg"</item>
-        <item>"http://mmarchev.com/wp-content/uploads/2015/03/digitalmarketingcourses1.jpg"</item>
-        <item>"https://glowroad.com/faceview/b3g/cc/ae/imgs/nt/1526448186735_collection_poster.jpeg"</item>
-        <item>"https://digitalks.com.br/wp-content/uploads/2016/09/Marketing-digital.jpg"</item>
-        <item>"https://www.manaferra.com/wp-content/uploads/2017/11/digital-marketing-1038x576.jpg"</item>
-        <item>"https://digitalmarketingphilippines.com/wp-content/uploads/2014/08/paid-and-free-social-media.jpg"</item>
-        <item>"http://www.etwinning.pl/wp-content/uploads/2016/11/digital-marketing-1563467_960_720.png"</item>
-        <item>"http://mmarchev.com/wp-content/uploads/2015/03/digitalmarketingcourses1.jpg"</item>
-        <item>"https://glowroad.com/faceview/b3g/cc/ae/imgs/nt/1526448186735_collection_poster.jpeg"</item>
-        <item>"https://digitalks.com.br/wp-content/uploads/2016/09/Marketing-digital.jpg"</item>
+        <item>"https://d1ixo36kppfedg.cloudfront.net/faceview/f9i/g9h/a1f/imgs/1518760791222_Ready21-xlg400x400.jpg"</item>
+        <item>"https://d1ixo36kppfedg.cloudfront.net/faceview/f9i/g9h/a1f/imgs/1518760809201_Ready95-xlg400x400.jpg"</item>
+        <item>"https://d1ixo36kppfedg.cloudfront.net/faceview/f9i/g9h/a1f/imgs/1518760802577_Ready59-xlg400x400.jpg"</item>
+        <item>"https://d1ixo36kppfedg.cloudfront.net/faceview/b3g/cc/ae/imgs/cl/1527232531030_collection_poster-lg600x364.jpeg"</item>
+        <item>"https://d1ixo36kppfedg.cloudfront.net/faceview/f9i/g9h/a1f/imgs/1518760814216_Ready121-xlg400x400.jpg"</item>
+        <item>"https://d1ixo36kppfedg.cloudfront.net/faceview/f9i/g9h/a1f/imgs/1518760803617_Ready65-xlg400x400.jpg"</item>
+        <item>"https://d1ixo36kppfedg.cloudfront.net/faceview/b3g/cc/ae/imgs/cl/1527231331988_collection_poster-lg600x364.jpeg"</item>
+        <item>"https://d1ixo36kppfedg.cloudfront.net/faceview/f9i/g9h/a1f/imgs/1518760805355_Ready75-xlg400x400.jpg"</item>
+        <item>"https://d1ixo36kppfedg.cloudfront.net/faceview/f9i/g9h/a1f/imgs/1518760813125_Ready115-xlg400x400.jpg"</item>
+        <item>"https://d1ixo36kppfedg.cloudfront.net/faceview/f9i/g9h/a1f/imgs/1518760796366_Ready43-xlg400x400.jpg"</item>
+        <item>"https://d1ixo36kppfedg.cloudfront.net/faceview/f9i/g9h/a1f/imgs/1518760791845_Ready24-xlg400x400.jpg"</item>
     </string-array>
+    <string name="select">Select</string>
 </resources>

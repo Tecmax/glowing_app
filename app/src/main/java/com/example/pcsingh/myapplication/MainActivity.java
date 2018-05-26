@@ -6,8 +6,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.widget.ImageView;
 
 import butterknife.BindArray;
+import butterknife.BindString;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -21,14 +26,47 @@ public class MainActivity extends AppCompatActivity {
     @BindArray(R.array.image_list)
     protected String[] imageList;
 
+    @BindView(R.id.new_arrival)
+    protected ImageView newArrival;
+    @BindView(R.id.lowest_price)
+    protected ImageView lowestPrice;
+    @BindView(R.id.best_selling)
+    protected ImageView bestSelling;
+    @BindString(R.string.new_arrival)
+    protected String headerImageNewArrival;
+    @BindString(R.string.lowest_price)
+    protected String headerImageLowestPrice;
+    @BindString(R.string.best_selling)
+    protected String headerImageBestSelling;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-
         itemList.setLayoutManager(new LinearLayoutManager(this));
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
         itemList.setAdapter(new MyAdapter(rainbow, imageList));
+
+        ImageUtil.getInstance().loadImage(headerImageNewArrival, newArrival);
+        ImageUtil.getInstance().loadImage(headerImageLowestPrice, lowestPrice);
+        ImageUtil.getInstance().loadImage(headerImageBestSelling, bestSelling);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.main_menu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
