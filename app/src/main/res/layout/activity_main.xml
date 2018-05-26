@@ -3,6 +3,6 @@
     android:id="@+id/itemList"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingEnd="3dp"
-    android:paddingStart="3dp"
+    android:paddingEnd="4dp"
+    android:paddingStart="4dp"
     android:background="#dad0d0" />
