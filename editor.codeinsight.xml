@@ -1,0 +1,5 @@
+<application>
+  <component name="CodeInsightSettings">
+    <option name="AUTO_POPUP_PARAMETER_INFO" value="false" />
+  </component>
+</application>
