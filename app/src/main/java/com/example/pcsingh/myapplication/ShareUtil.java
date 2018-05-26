@@ -14,10 +14,12 @@ public class ShareUtil {
 
     public static void shareData(Context ctx, String caption, final Bitmap bm) {
         Log.d(TAG, "caption : " + caption);
-        final Intent share = new Intent(Intent.ACTION_SEND);
+        final Intent shareIntent = new Intent(Intent.ACTION_SEND);
+        shareIntent.setType("image/jpg");
         final Uri uri = getImageUri(ctx, bm, caption);
-        share.putExtra(Intent.EXTRA_STREAM, uri);
-        ctx.startActivity(Intent.createChooser(share, "Share Image"));
+        shareIntent.putExtra(Intent.EXTRA_STREAM, uri);
+        shareIntent.putExtra(Intent.EXTRA_TEXT, "Share To Earn");
+        ctx.startActivity(Intent.createChooser(shareIntent, "Share To Earn"));
     }
 
     private static Uri getImageUri(Context context, Bitmap bitmap, String caption) {
