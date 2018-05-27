@@ -1,6 +1,7 @@
 package com.example.pcsingh.myapplication;
 
 import android.content.Context;
+import android.content.ContextWrapper;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.util.Log;
@@ -13,6 +14,7 @@ import com.squareup.picasso.LruCache;
 import com.squareup.picasso.Picasso;
 import com.squareup.picasso.RequestCreator;
 
+import java.io.File;
 import java.lang.ref.WeakReference;
 
 
@@ -23,6 +25,7 @@ public class ImageUtil {
     private final WeakReference<Context> context;
     private boolean singletonBuilt;
     private static final int PICASSO_DISK_CACHE_SIZE = 1024 * 1024 * 30; // Size in bytes (30 MB)
+    private static final String PICASSO_IMAGE_DIR = "/cache/picasso-cache";
 
     public ImageUtil(final Context context) {
         this.context = new WeakReference<>(context);
@@ -48,7 +51,7 @@ public class ImageUtil {
         if (!singletonBuilt) {
             if (ctx != null) {
                 final Picasso.Builder builder = new Picasso.Builder(ctx);
-                setUpDownloader(builder,ctx);
+                setUpDownloader(builder, ctx);
                 try {
                     Picasso.setSingletonInstance(builder.build());
                 } catch (IllegalStateException e) {
@@ -78,5 +81,21 @@ public class ImageUtil {
                 Log.e(TAG, "OutOfMemoryError", e);
             }
         }
+    }
+
+    public String[] listOfImageFromLocalStorage() {
+        final ContextWrapper cw = new ContextWrapper(context.get());
+        final File directory = cw.getDir("", Context.MODE_PRIVATE);
+        final File picassoCache = new File(directory.getParentFile(), PICASSO_IMAGE_DIR);
+        final File[] listFiles = picassoCache.listFiles();
+        final String[] imageFileName = new String[listFiles.length];
+        int i = 0;
+        for (File fileName : listFiles) {
+            if (!fileName.isDirectory()) {
+                imageFileName[i] = fileName.getAbsolutePath();
+            }
+            i++;
+        }
+        return imageFileName;
     }
 }

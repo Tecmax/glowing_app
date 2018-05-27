@@ -11,6 +11,8 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.ImageView;
 
+import java.util.Arrays;
+
 import butterknife.BindArray;
 import butterknife.BindString;
 import butterknife.BindView;
@@ -70,6 +72,12 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.all:
+                final String[] imgList = ImageUtil.getInstance().listOfImageFromLocalStorage();
+                Log.d(TAG, Arrays.toString(imgList));
+                break;
+        }
         return super.onOptionsItemSelected(item);
     }
 
