@@ -6,26 +6,34 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
+import android.support.v4.content.FileProvider;
 import android.text.Html;
 
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ShareUtil {
-    private static final String TAG = ShareUtil.class.getSimpleName();
+
+    public static Uri createUriFromFilePath(@NonNull Context ctx, final String imagePath) {
+        return FileProvider.getUriForFile(ctx, BuildConfig.APPLICATION_ID + ".provider",
+                new File(imagePath.substring(
+                        imagePath.indexOf(BuildConfig.APPLICATION_ID) + BuildConfig.APPLICATION_ID.length())));
+    }
+
+    public static void sendingImageWithCaption(@NonNull Context ctx, final String imagePath) {
+        final Uri uri = createUriFromFilePath(ctx, imagePath);
+        sendingImageWithCaption(ctx, uri);
+    }
 
     public static void sendingImageWithCaption(@NonNull Context ctx,
                                                final String caption, @NonNull final Bitmap bm) {
-        final Intent shareIntent = new Intent(Intent.ACTION_SEND);
-        shareIntent.setType("image/jpg");
         final Uri uri = createUriFromBitmap(ctx, bm, caption);
-        shareIntent.putExtra(Intent.EXTRA_STREAM, uri);
-        shareIntent.putExtra(Intent.EXTRA_TEXT, "Share To Earn");
-        ctx.startActivity(Intent.createChooser(shareIntent, "Share To Earn"));
+        sendingImageWithCaption(ctx, uri);
     }
 
-    private static Uri createUriFromBitmap(@NonNull Context context, @NonNull Bitmap bitmap, final String caption) {
+    public static Uri createUriFromBitmap(@NonNull Context context, @NonNull Bitmap bitmap, final String caption) {
         final ByteArrayOutputStream bytes = new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
         final String path = MediaStore.Images.Media.
@@ -33,8 +41,8 @@ public class ShareUtil {
         return Uri.parse(path);
     }
 
-    private static ArrayList<Uri> createUriFromBitmap(@NonNull Context context,
-                                                      final List<Bitmap> bitmapList, final List<String> captionList) {
+    public static ArrayList<Uri> createUriFromBitmap(@NonNull Context context,
+                                                     final List<Bitmap> bitmapList, final List<String> captionList) {
         final ArrayList<Uri> uriList = new ArrayList<>();
         if (bitmapList != null && !bitmapList.isEmpty() && captionList != null && !captionList.isEmpty()
                 && bitmapList.size() == captionList.size()) {
@@ -45,6 +53,14 @@ public class ShareUtil {
             }
         }
         return uriList;
+    }
+
+    public static void sendingImageWithCaption(@NonNull Context ctx, final Uri uri) {
+        final Intent shareIntent = new Intent(Intent.ACTION_SEND);
+        shareIntent.setType("image/jpg");
+        shareIntent.putExtra(Intent.EXTRA_STREAM, uri);
+        shareIntent.putExtra(Intent.EXTRA_TEXT, "Share To Earn");
+        ctx.startActivity(Intent.createChooser(shareIntent, "Share To Earn"));
     }
 
     public static void sendingMultipleImageWithCaption(@NonNull Context ctx,

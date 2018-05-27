@@ -75,7 +75,8 @@ public class MainActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.all:
                 final String[] imgList = ImageUtil.getInstance().listOfImageFromLocalStorage();
-                Log.d(TAG, Arrays.toString(imgList));
+                Log.v(TAG, Arrays.toString(imgList));
+                ShareUtil.sendingImageWithCaption(this, imgList[0]);
                 break;
         }
         return super.onOptionsItemSelected(item);
