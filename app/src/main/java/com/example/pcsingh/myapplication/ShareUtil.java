@@ -6,7 +6,6 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
-import android.support.v4.content.FileProvider;
 import android.text.Html;
 
 import java.io.ByteArrayOutputStream;
@@ -17,14 +16,22 @@ import java.util.List;
 public class ShareUtil {
 
     public static Uri createUriFromFilePath(@NonNull Context ctx, final String imagePath) {
-        return FileProvider.getUriForFile(ctx, BuildConfig.APPLICATION_ID + ".provider",
-                new File(imagePath.substring(
-                        imagePath.indexOf(BuildConfig.APPLICATION_ID) + BuildConfig.APPLICATION_ID.length())));
+        final File file = new File(imagePath);
+        if (file.exists()) {
+            return Uri.fromFile(file);
+        } else {
+            return null;
+        }
     }
 
     public static void sendingImageWithCaption(@NonNull Context ctx, final String imagePath) {
         final Uri uri = createUriFromFilePath(ctx, imagePath);
-        sendingImageWithCaption(ctx, uri);
+        final Intent shareIntent = new Intent(Intent.ACTION_SEND);
+        shareIntent.setType("*/*");
+        shareIntent.setDataAndType(uri, "*/*");
+//        shareIntent.putExtra(Intent.EXTRA_STREAM, uri);
+        shareIntent.putExtra(Intent.EXTRA_TEXT, "Share To Earn");
+        ctx.startActivity(Intent.createChooser(shareIntent, "Share To Earn"));
     }
 
     public static void sendingImageWithCaption(@NonNull Context ctx,
@@ -33,7 +40,8 @@ public class ShareUtil {
         sendingImageWithCaption(ctx, uri);
     }
 
-    public static Uri createUriFromBitmap(@NonNull Context context, @NonNull Bitmap bitmap, final String caption) {
+    public static Uri createUriFromBitmap(@NonNull Context context,
+                                          @NonNull Bitmap bitmap, final String caption) {
         final ByteArrayOutputStream bytes = new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
         final String path = MediaStore.Images.Media.
@@ -41,8 +49,8 @@ public class ShareUtil {
         return Uri.parse(path);
     }
 
-    public static ArrayList<Uri> createUriFromBitmap(@NonNull Context context,
-                                                     final List<Bitmap> bitmapList, final List<String> captionList) {
+    public static ArrayList<Uri> createUriFromBitmap(@NonNull Context context, final List<Bitmap> bitmapList,
+                                                     final List<String> captionList) {
         final ArrayList<Uri> uriList = new ArrayList<>();
         if (bitmapList != null && !bitmapList.isEmpty() && captionList != null && !captionList.isEmpty()
                 && bitmapList.size() == captionList.size()) {

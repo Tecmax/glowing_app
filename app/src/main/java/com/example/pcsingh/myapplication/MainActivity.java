@@ -74,9 +74,9 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.all:
-                final String[] imgList = ImageUtil.getInstance().listOfImageFromLocalStorage();
-                Log.v(TAG, Arrays.toString(imgList));
-                ShareUtil.sendingImageWithCaption(this, imgList[0]);
+                // For Testing
+//                 final String[] imgList = ImageUtil.getInstance().listOfImageFromLocalStorage();
+//                 ShareUtil.sendingImageWithCaption(this, imgList[3]);
                 break;
         }
         return super.onOptionsItemSelected(item);
